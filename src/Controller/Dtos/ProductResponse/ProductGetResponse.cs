@@ -1,14 +1,12 @@
 using Domain.Entities.Enums;
-using Domain.ValueObjects;
 
-namespace UseCase.Dtos.ProductRequest;
+namespace Controller.Dtos.ProductResponse;
 
-public record ProductCreateRequest
+public record ProductGetResponse
 {
+	public int Id { get; init; }
 	public string Name { get; init; } = string.Empty;
 	public string Description { get; init; } = string.Empty;
-	public decimal Price { get; init; }
 	public ProductType ProductType { get; init; }
-	public Photo? Photo { get; init; }
-
+	public decimal Price { get; init; }
 }
