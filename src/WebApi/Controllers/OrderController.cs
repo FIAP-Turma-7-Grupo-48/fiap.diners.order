@@ -67,4 +67,14 @@ public class OrderController : ControllerBase
         return Ok(response);
     }
 
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [HttpPatch]
+    [Route("{id}/status/received")]
+    public async Task<IActionResult> UpdateStatusToReceived(int id, UpdateOrderStatusToReceivedRequest updateOrderStatusToReceivedRequest, CancellationToken cancellationToken)
+    {
+        await _orderApplication.UpdateStatusToReceived(id, updateOrderStatusToReceivedRequest, cancellationToken);
+
+        return NoContent();
+    }
 }

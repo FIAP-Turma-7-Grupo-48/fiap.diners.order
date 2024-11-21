@@ -15,4 +15,8 @@ public interface IOrderApplication
     Task<OrderUpdateOrderProductResponse?> RemoveProduct(int orderId, int productId,
         CancellationToken cancellationToken);
 
+    Task UpdateStatusToSentToProduction(int orderId, CancellationToken cancellationToken);
+
+    Task UpdateStatusToReceived(int orderId, UpdateOrderStatusToReceivedRequest updateOrderStatusToReceivedRequest, CancellationToken cancellationToken);
+
 }

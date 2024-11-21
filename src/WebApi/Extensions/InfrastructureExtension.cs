@@ -1,9 +1,13 @@
+using Domain.Clients;
 using Domain.Repositories;
 using Infrastructure.Adapters;
+using Infrastructure.Clients.RabbbitMq;
 using Infrastructure.Context;
 using Infrastructure.Repositories;
 using Infrastructure.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using RabbitMQ.Client;
 
 namespace WebApi.Extensions;
 
@@ -21,7 +25,9 @@ internal static class InfrastructureExtension
 		return services
 			.AddSqlRepositories()
 			.AddAdapters()
-			.AddContext(configuration);
+			.AddContext(configuration)
+			.AddClients(configuration)
+			.AddRabbitMqConnectionFactory(configuration);
 	}
 
 	private static IServiceCollection AddSqlRepositories(this IServiceCollection services)
@@ -50,7 +56,29 @@ internal static class InfrastructureExtension
 					opts.UseSqlServer(ConnectionString));
 	}
 
-	public static void MigrationInitialisation(this IApplicationBuilder app)
+    private static IServiceCollection AddClients(this IServiceCollection services, IConfiguration configuration)
+    {
+		return
+			services
+				.AddSingleton<IPaymentClient, PaymentRabbitMqClient>();
+    }
+
+    private static IServiceCollection AddRabbitMqConnectionFactory(this IServiceCollection services, IConfiguration configuration)
+    {
+        return
+            services
+                .AddSingleton(
+					new ConnectionFactory() 
+					{ 
+						HostName = "localhost",
+						Port = 5672,
+                        UserName = "guest",
+                        Password = "guest"
+                    }
+				);
+    }
+
+    public static void MigrationInitialisation(this IApplicationBuilder app)
 	{
 		Console.WriteLine("Iniciando migration");
 		try

@@ -1,7 +1,6 @@
 using Controller.Application.Interfaces;
 using Controller.Dtos.OrderResponse;
 using Controller.Extensions.OrderAggregate;
-using Domain.Entities.Enums;
 using UseCase.Dtos.OrderRequest;
 using UseCase.Services.Interfaces;
 
@@ -9,49 +8,59 @@ namespace Controller.Application;
 
 public class OrderApplication : IOrderApplication
 {
-	private readonly IOrderUseCase _orderUseCase;
-	public OrderApplication(IOrderUseCase orderUseCase)
-	{
-		_orderUseCase = orderUseCase;
-	}
+    private readonly IOrderUseCase _orderUseCase;
+    public OrderApplication(IOrderUseCase orderUseCase)
+    {
+        _orderUseCase = orderUseCase;
+    }
 
-	public async Task<GetOrListOrderResponse?> GetAsync(int id, CancellationToken cancellationToken)
-	{
-		var order = await _orderUseCase.GetAsync(id, cancellationToken);
+    public async Task<GetOrListOrderResponse?> GetAsync(int id, CancellationToken cancellationToken)
+    {
+        var order = await _orderUseCase.GetAsync(id, cancellationToken);
 
-		return
-			order?.ToGetOrderResponse();
-	}
+        return
+            order?.ToGetOrderResponse();
+    }
 
-	public async Task<CreateOrderResponse?> CreateAsync(CreateOrderRequest orderCreateRequest, CancellationToken cancellationToken)
-	{
-		var order = await _orderUseCase.CreateAsync(orderCreateRequest, cancellationToken);
-		if (order == null)
-		{
-			return null;
-		}
+    public async Task<CreateOrderResponse?> CreateAsync(CreateOrderRequest orderCreateRequest, CancellationToken cancellationToken)
+    {
+        var order = await _orderUseCase.CreateAsync(orderCreateRequest, cancellationToken);
+        if (order == null)
+        {
+            return null;
+        }
 
-		return new()
-		{
-			OrderId = order.Id
-		};
-	}
+        return new()
+        {
+            OrderId = order.Id
+        };
+    }
 
-	public async Task<OrderUpdateOrderProductResponse?> AddProduct(int orderId,
-		OrderAddProductRequest orderAddProductRequest, CancellationToken cancellationToken)
-	{
-		var order = await _orderUseCase.AddProduct(orderId, orderAddProductRequest, cancellationToken);
+    public async Task<OrderUpdateOrderProductResponse?> AddProduct(int orderId,
+        OrderAddProductRequest orderAddProductRequest, CancellationToken cancellationToken)
+    {
+        var order = await _orderUseCase.AddProduct(orderId, orderAddProductRequest, cancellationToken);
 
-		return
-			order?.ToOrderUpdateProductResponse();
+        return
+            order?.ToOrderUpdateProductResponse();
 
-	}
-	public async Task<OrderUpdateOrderProductResponse?> RemoveProduct(int orderId,
-		int productId, CancellationToken cancellationToken)
-	{
-		var order = await _orderUseCase.RemoveProduct(orderId, productId, cancellationToken);
-		return
-			order?.ToOrderUpdateProductResponse();
-	}
+    }
+    public async Task<OrderUpdateOrderProductResponse?> RemoveProduct(int orderId,
+        int productId, CancellationToken cancellationToken)
+    {
+        var order = await _orderUseCase.RemoveProduct(orderId, productId, cancellationToken);
+        return
+            order?.ToOrderUpdateProductResponse();
+    }
+
+    public Task UpdateStatusToSentToProduction(int orderId, CancellationToken cancellationToken)
+    {
+        return _orderUseCase.UpdateStatusToSentToProduction(orderId, cancellationToken);
+    }
+
+    public Task UpdateStatusToReceived(int orderId, UpdateOrderStatusToReceivedRequest updateOrderStatusToReceivedRequest, CancellationToken cancellationToken)
+    {
+        return _orderUseCase.UpdateStatusToReceived(orderId, updateOrderStatusToReceivedRequest.PaymentMethod, cancellationToken);
+    }
 
 }
