@@ -67,7 +67,7 @@ internal static class InfrastructureExtension
     {
         return
             services
-                .AddSingleton(
+                .AddSingleton<IConnectionFactory>(
 					new ConnectionFactory() 
 					{ 
 						HostName = "localhost",

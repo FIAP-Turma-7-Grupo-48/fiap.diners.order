@@ -6,9 +6,9 @@ namespace Infrastructure.Clients.RabbbitMq;
 
 public abstract class RabbitMQPublisher<T>
 {
-    private readonly ConnectionFactory _factory;
+    private readonly IConnectionFactory _factory;
     private readonly string _queue;
-    protected RabbitMQPublisher(ConnectionFactory factory, string queue)
+    protected RabbitMQPublisher(IConnectionFactory factory, string queue)
     {
         _factory = factory;
         _queue = queue;
@@ -25,7 +25,7 @@ public abstract class RabbitMQPublisher<T>
         string jsonString = JsonSerializer.Serialize(message);
         var body = Encoding.UTF8.GetBytes(jsonString);
 
-        await channel.BasicPublishAsync(string.Empty, "order", body, cancellationToken);
+        await channel.BasicPublishAsync(string.Empty, _queue, body, cancellationToken);
 
     }
 }
