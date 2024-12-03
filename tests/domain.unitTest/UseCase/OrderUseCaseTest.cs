@@ -20,6 +20,7 @@ namespace UseCase.OrderTest
         Mock<IProductRepository> _productRepository;
         Mock<NotificationContext> _notificationContext;
         Mock<IPaymentClient> _paymentClient;
+        Mock<IProductionClient> _productionClient;
 
         Order orderResponseMock;
         Product productResponseMock;
@@ -32,12 +33,14 @@ namespace UseCase.OrderTest
             _productRepository = new Mock<IProductRepository>();
             _notificationContext = new Mock<NotificationContext>();
             _paymentClient = new Mock<IPaymentClient>();
+            _productionClient = new Mock<IProductionClient>();
 
-            _orderUseCase = new OrderUseCase(_orderRepository.Object, 
-                                            _customerRepository.Object, 
-                                            _productRepository.Object, 
+            _orderUseCase = new OrderUseCase(_orderRepository.Object,
+                                            _customerRepository.Object,
+                                            _productRepository.Object,
                                             _notificationContext.Object,
-                                            _paymentClient.Object
+                                            _paymentClient.Object,
+                                            _productionClient.Object
                                             );
 
 
@@ -95,7 +98,7 @@ namespace UseCase.OrderTest
             _orderRepository.Setup(x => x.GetAsync(It.IsAny<int>(), default)).ReturnsAsync(orderResponseMock);
 
             var result = await _orderUseCase.GetAsync(1, default);
-            
+
             Assert.NotNull(result);
             Assert.True(result.Price > 0);
         }
