@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fiap-diners-orders-svc
+  namespace: fiap-sa
+  labels:
+    app: fiap-diners-orders-svc
+spec:
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+  selector:
+    app: fiap-diners-orders
+  type: LoadBalancer

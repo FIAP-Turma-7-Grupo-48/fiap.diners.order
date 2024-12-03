@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fiap-diners-orders-configmap
+  namespace: fiap-sa
+  labels:
+    app: fiap-diners-orders-configmap
+data:
+  MercadoPagoAcessToken: "TEST-4885884137159783-072523-fa33e89752ebe5f27b98d16894582fdd-193275236"
+  ASPNETCORE_ENVIRONMENT: "Development"
