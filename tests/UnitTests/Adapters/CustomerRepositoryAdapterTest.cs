@@ -1,13 +1,12 @@
-﻿using Domain.Entities.CustomerAggregate;
+﻿using System.Linq.Expressions;
+using Domain.Entities.CustomerAggregate;
 using Domain.Repositories;
-using Domain.ValueObjects;
 using Infrastructure.Repositories;
 using Infrastructure.Repositories.Interfaces;
 using Infrastructure.SqlModels.CustomerAggregate;
 using Moq;
-using System.Linq.Expressions;
 
-namespace Adapters.CustomerRepositoryTest
+namespace UnitTests.Adapters
 {
     public class CustomerRepositoryAdapterTest
     {

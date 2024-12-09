@@ -5,9 +5,8 @@ using Domain.ValueObjects;
 using Moq;
 using UseCase.Dtos.CustomerRequest;
 using UseCase.Services;
-using Xunit.Sdk;
 
-namespace UseCase.CustomerTest
+namespace UnitTests.UseCase
 {
     public class CustomerUseCaseTest
     {

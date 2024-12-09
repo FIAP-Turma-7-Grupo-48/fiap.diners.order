@@ -1,14 +1,12 @@
-﻿using Domain.Entities.Enums;
+﻿using System.Linq.Expressions;
+using Domain.Entities.Enums;
 using Domain.Entities.ProductAggregate;
 using Infrastructure.Adapters;
-using Infrastructure.Repositories;
 using Infrastructure.Repositories.Interfaces;
 using Infrastructure.SqlModels.ProductAggregate;
 using Moq;
-using System.Linq.Expressions;
-using System.Runtime.CompilerServices;
 
-namespace Adapters.ProductRepositoryTest
+namespace UnitTests.Adapters
 {
     public class ProductRepositoryAdapterTest
     {

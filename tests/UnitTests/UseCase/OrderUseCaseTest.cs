@@ -9,7 +9,7 @@ using Moq;
 using UseCase.Dtos.OrderRequest;
 using UseCase.Services;
 
-namespace UseCase.OrderTest
+namespace UnitTests.UseCase
 {
     public class OrderUseCaseTest
     {

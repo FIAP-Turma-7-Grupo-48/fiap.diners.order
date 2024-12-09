@@ -1,13 +1,12 @@
-﻿using Domain.Entities.Enums;
+﻿using System.Linq.Expressions;
+using Domain.Entities.Enums;
 using Domain.Entities.OrderAggregate;
 using Infrastructure.Adapters;
-using Infrastructure.Repositories;
 using Infrastructure.Repositories.Interfaces;
 using Infrastructure.SqlModels.OrderAggregate;
 using Moq;
-using System.Linq.Expressions;
 
-namespace Adapters.OrderRepositoryTest
+namespace UnitTests.Adapters
 {
     public class OrderRepositoryAdpaterTest
     {
