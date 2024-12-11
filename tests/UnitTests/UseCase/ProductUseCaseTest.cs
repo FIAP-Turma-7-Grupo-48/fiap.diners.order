@@ -7,7 +7,7 @@ using Moq;
 using UseCase.Dtos.ProductRequest;
 using UseCase.Services;
 
-namespace UseCase.ProductTest
+namespace UnitTests.UseCase
 {
     public class ProductUseCaseTest
     {
