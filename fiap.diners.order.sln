@@ -27,6 +27,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "src\Infra
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Controller", "src\Controller\Controller.csproj", "{5DCCB015-286C-4C8E-9AFB-5C0286AE7D06}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D1148D71-E55A-4C09-8499-E8E72217E775}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "k8s", "k8s", "{AD93099A-2B9A-4B1F-AA14-513FA6944102}"
+	ProjectSection(SolutionItems) = preProject
+		k8s\configmap-fiap-sa.yaml = k8s\configmap-fiap-sa.yaml
+		k8s\deployment-fiap-sa.yaml = k8s\deployment-fiap-sa.yaml
+		k8s\secret-fiap-sa.yaml = k8s\secret-fiap-sa.yaml
+		k8s\service-fiap-sa.yaml = k8s\service-fiap-sa.yaml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

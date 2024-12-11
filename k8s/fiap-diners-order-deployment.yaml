@@ -2,20 +2,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fiap-diners-orders
-  namespace: fiap-sa
+  name: fiap-diners-order
+  namespace: fiap-diners
   labels:
-    app: fiap-diners-orders
-  annotations:    
+    app: fiap-diners-order
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: fiap-diners-orders
+      app: fiap-diners-order
   template:
     metadata:
       labels:
-        app: fiap-diners-orders
+        app: fiap-diners-order
     spec:
       securityContext:
         runAsGroup: 0
@@ -47,9 +46,9 @@ spec:
         - containerPort: 8080
         envFrom:
         - configMapRef:
-            name: fiap-diners-orders-configmap
+            name: fiap-diners-order-configmap
         - secretRef:
-            name: fiap-diners-orders-secrets
+            name: fiap-diners-order-secrets
         volumeMounts:
         - name: ephemeral
           mountPath: /tmp
