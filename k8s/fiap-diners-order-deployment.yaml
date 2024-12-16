@@ -27,11 +27,11 @@ spec:
               - key: app
                 operator: In
                 values:
-                - fiap-diners-orders
+                - fiap-diners-order
             topologyKey: kubernetes.io/hostname
       containers:
-      - image: 891377307312.dkr.ecr.us-east-1.amazonaws.com/fiap-sa-api:latest # add updated image
-        name: fiap-diners-orders
+      - image: ghcr.io/fiap-turma-7-grupo-48/fiap.diners.order:latest
+        name: fiap-diners-order
         imagePullPolicy: Always
         resources:
           requests:

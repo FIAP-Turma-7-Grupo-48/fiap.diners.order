@@ -5,7 +5,7 @@ metadata:
   name: fiap-diners-order-configmap
   namespace: fiap-diners
   labels:
-    app: fiap-diners-orders
+    app: fiap-diners-order
 data:
   MercadoPagoAcessToken: "TEST-4885884137159783-072523-fa33e89752ebe5f27b98d16894582fdd-193275236"
   ASPNETCORE_ENVIRONMENT: "Development"

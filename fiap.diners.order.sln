@@ -34,10 +34,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "k8s", "k8s", "{AD93099A-2B9A-4B1F-AA14-513FA6944102}"
 	ProjectSection(SolutionItems) = preProject
-		k8s\configmap-fiap-sa.yaml = k8s\configmap-fiap-sa.yaml
-		k8s\deployment-fiap-sa.yaml = k8s\deployment-fiap-sa.yaml
-		k8s\secret-fiap-sa.yaml = k8s\secret-fiap-sa.yaml
-		k8s\service-fiap-sa.yaml = k8s\service-fiap-sa.yaml
+		k8s\fiap-diners-order-configmap.yaml = k8s\fiap-diners-order-configmap.yaml
+		k8s\fiap-diners-order-deployment.yaml = k8s\fiap-diners-order-deployment.yaml
+		k8s\fiap-diners-order-namespace.yaml = k8s\fiap-diners-order-namespace.yaml
+		k8s\fiap-diners-order-secret.yaml = k8s\fiap-diners-order-secret.yaml
+		k8s\fiap-diners-order-service.yaml = k8s\fiap-diners-order-service.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{14E2BCD6-CBF0-4E5F-8C69-CDC908444B6F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{4127DC49-C4AB-4966-B4BE-12641515BAEC}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\create-and-publish-docker-image.yaml = .github\workflows\create-and-publish-docker-image.yaml
 	EndProjectSection
 EndProject
 Global
@@ -89,6 +97,7 @@ Global
 		{68D031ED-3270-44E7-AD58-B26AA7DE137E} = {65B37EC0-4EAA-4302-B123-BD819918C40C}
 		{723044AC-7943-4E77-9FC9-2292CDF6E530} = {68D031ED-3270-44E7-AD58-B26AA7DE137E}
 		{5DCCB015-286C-4C8E-9AFB-5C0286AE7D06} = {68D031ED-3270-44E7-AD58-B26AA7DE137E}
+		{4127DC49-C4AB-4966-B4BE-12641515BAEC} = {14E2BCD6-CBF0-4E5F-8C69-CDC908444B6F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4187B776-CE76-4E60-9ACB-75A0B9E096C8}
